@@ -66,4 +66,9 @@ public class Cliente {
     public String nombreCompleto(){
         return "El nombre completo es: "+nombre+" "+apellidos;
     }
+    @Override
+    public String toString() {
+        return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion
+                + ", localidad=" + localidad + ", fechaDeNacimiento=" + fechaDeNacimiento + "]";
+    }
 }
