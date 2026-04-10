@@ -10,5 +10,6 @@ public class AppSucursalBancaria {
         System.out.println(c1.nombreCompleto());
         Cuenta cuenta1 = new CuentaCorriente(100, 1, c1);
         cuenta1.toString();
+        System.out.println("Fin de programa...");
     }
 }
