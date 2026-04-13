@@ -3,14 +3,14 @@ package Herencia.Excepciones.SucursalBancaria;
 import java.time.LocalDate;
 
 public class Cliente {
-    //----------ATRIBUTOS----------
+    //---------------ATRIBUTOS---------------
     private String dni;
     private String nombre;
     private String apellidos;
     private String direccion;
     private String localidad;
     private LocalDate fechaDeNacimiento;
-    //----------CONSTRUCTORES----------
+    //---------------CONSTRUCTORES---------------
     public Cliente(String dni){
         this.dni=dni;
     }
@@ -22,7 +22,7 @@ public class Cliente {
         this.localidad=localidad;
         this.fechaDeNacimiento=fechaDeNacimiento;
     }
-    //----------GETTERS Y SETTERS----------
+    //---------------GETTERS Y SETTERS---------------
     public String getDni() {
         return dni;
     }
@@ -59,7 +59,7 @@ public class Cliente {
     public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
-    //----------METODOS----------
+    //---------------METODOS---------------
     public String direccionCompleta(){
         return "La direccion completa es: "+direccion+" " +localidad;
     }
@@ -68,7 +68,7 @@ public class Cliente {
     }
     @Override
     public String toString() {
-        return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", direccion=" + direccion
-                + ", localidad=" + localidad + ", fechaDeNacimiento=" + fechaDeNacimiento + "]";
+        return "---------------CLIENTE---------------"
+            +"\n\t-Dni: "+dni+"\n\t-Nombre: " +nombre+ "\n\t-Apellidos: " +apellidos+ "\n\t-Direccion: " +direccion+ "\n\t-Localidad: " +localidad+ "\n\t-FechaDeNacimiento: " +fechaDeNacimiento;
     }
 }

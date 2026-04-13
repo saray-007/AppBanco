@@ -3,11 +3,11 @@ package Herencia.Excepciones.SucursalBancaria;
 import java.time.LocalDateTime;
 
 public class CuentaCorriente extends Cuenta{
-    //----------CONSTRUCTOR----------
+    //---------------CONSTRUCTOR---------------
     public CuentaCorriente(double saldo, int numeroCuenta, Cliente titular){
         super(saldo, numeroCuenta, titular);
     }
-    //----------METODOS----------
+    //---------------METODOS---------------
     public void retirar(double cantidad) {
         if (cantidad > 300) {
             System.out.println("No puedes retirar más de 300€");

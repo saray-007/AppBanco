@@ -3,14 +3,14 @@ package Herencia.Excepciones.SucursalBancaria;
 import java.time.LocalDateTime;
 
 public class FondoInversion extends Cuenta{
-    //---------ATRIBUTOS---------
+    //---------------ATRIBUTOS---------------
     private double interes;
-    //---------CONSTRUCTOR---------
+    //---------------CONSTRUCTOR---------------
     public FondoInversion(double saldo, int numeroCuenta, Cliente titular, double interes){
         super(saldo, numeroCuenta, titular);
         this.interes=interes;
     }
-    //---------METODOS----------
+    //---------------METODOS----------------
     public void calcularInteres() {
         double ganancia = saldo * interes;
         saldo += ganancia;
