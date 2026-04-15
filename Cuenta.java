@@ -38,12 +38,13 @@ public abstract class Cuenta {
     //---------------METODOS---------------
     public abstract void retirar(double cantidad);
     public abstract void ingresar(double cantidad);
-    public void mostrarMovimientos() {
+    protected void mostrarMovimientos() {
         for (Movimientos m : movimientos) {
-            System.out.println(m);
+            System.out.println(m.toString());
         }
     
     }
+    public abstract void verDatos();
     @Override
     public String toString() {
         return "---------------CUENTA---------------" 

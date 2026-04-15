@@ -66,6 +66,9 @@ public class Cliente {
     public String nombreCompleto(){
         return "El nombre completo es: "+nombre+" "+apellidos;
     }
+    public String clienteCompleto(){
+        return dni+" "+nombre+" "+apellidos;
+    }
     @Override
     public String toString() {
         return "---------------CLIENTE---------------"
