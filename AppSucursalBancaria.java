@@ -61,6 +61,7 @@ public class AppSucursalBancaria {
         clientes.add(new Cliente(dni,nombre, apellidos, direccion, Localidad, LocalDate.parse(fecha)));
 
         System.out.println("Cliente creado correctamente"+"\n");
+        
     }
 
     static void crearCuenta() {
@@ -72,7 +73,7 @@ public class AppSucursalBancaria {
 
         Cliente cliente;
         do {
-            System.out.println("Selecciona cliente: ");
+            System.out.println("Selecciona el nombre del  cliente: ");
             int i=0;
             for (Cliente c : clientes) {
                 System.out.println(i+".-"+c.getNombre());

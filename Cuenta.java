@@ -7,13 +7,13 @@ public abstract class Cuenta {
     //---------------ATRIBUTOS---------------
     protected double saldo;
     protected int numeroCuenta;
-    protected Cliente titular;
+    protected Cliente nombre;
     protected ArrayList<Movimientos> movimientos;
     //---------------CONSTRUCTOR---------------
-    public Cuenta(double saldo, int numeroCuenta, Cliente titular){
+    public Cuenta(double saldo, int numeroCuenta, Cliente nombre){
         this.saldo=saldo;
         this.numeroCuenta=numeroCuenta;
-        this.titular=titular;
+        this.nombre=nombre;
         this.movimientos = new ArrayList<>();
     }
     //---------------GETTERS Y SETTERS---------------
@@ -29,11 +29,11 @@ public abstract class Cuenta {
     public void setNumeroCuenta(int numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
     }
-    public Cliente getTitular() {
-        return titular;
+    public Cliente getnombre() {
+        return nombre;
     }
-    public void setTitular(Cliente titular) {
-        this.titular = titular;
+    public void setnombre(Cliente nombre) {
+        this.nombre = nombre;
     }
     //---------------METODOS---------------
     public abstract void retirar(double cantidad);
@@ -48,7 +48,7 @@ public abstract class Cuenta {
     @Override
     public String toString() {
         return "---------------CUENTA---------------" 
-        +"\n\t-Saldo: " +saldo+ "\n\t-NumeroCuenta: " +numeroCuenta+ "\n\t-Titular: " +titular+ "\n\t-Movimientos: "+movimientos;
+        +"\n\t-Saldo: " +saldo+ "\n\t-NumeroCuenta: " +numeroCuenta+ "\n\t-Titular: " +nombre+ "\n\t-Movimientos: "+movimientos;
     }
     //---------------CLASE MOVIMIENTOS---------------
     class Movimientos {
