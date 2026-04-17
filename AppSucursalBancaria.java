@@ -1,5 +1,5 @@
 package Herencia.Excepciones.SucursalBancaria;
-
+ 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -42,7 +42,8 @@ public class AppSucursalBancaria {
     static void crearCliente() {
 
         System.out.println("Dime el dni del cliente");
-        String dni = entrada.nextLine();
+        //COMPROBAR QUE EL CLIENTE NO EXISTE
+        String dni = validarDni();
         System.out.println("Dime el nombre del cliente");
         String nombre = entrada.nextLine();
         System.out.println("Dime los apellidos del cliente");
@@ -52,9 +53,9 @@ public class AppSucursalBancaria {
         System.out.println("Dime la ciudad de residencia del cliente");
         String ciudad = entrada.nextLine();
         System.out.println("Dime la fecha de nacimiento del cliente AAAA-MM-DD");
-        String fecha = entrada.nextLine();
+        LocalDate fecha = validarFecha();
 
-        clientes.add(new Cliente(dni,nombre, apellidos, direccion, ciudad, LocalDate.parse(fecha)));
+        clientes.add(new Cliente(dni,nombre, apellidos, direccion, ciudad, fecha));
         System.out.println("El cliente de nombre "+nombre+" "+apellidos+" se ha creado correctamente");
     }
 
@@ -73,7 +74,32 @@ public class AppSucursalBancaria {
         cuentas.add(cuenta);
         System.out.println("La cuenta a nombre de "+cliente.nombreCompleto()+" se ha creado correctamente");
     }
-
+    static String validarDni(){
+        while(true){
+            try{ 
+                String s = entrada.nextLine();
+                //recorremos el array de clientes
+                for(Cliente c : clientes){
+                    if (c.getDni().equals(s)) {
+                        throw new ClienteExisteExcepciones(c);
+                    }
+                }
+                return s;
+            }catch(ClienteExisteExcepciones e){
+                System.out.println(e);
+            }
+        }
+    }
+    static LocalDate validarFecha(){
+        while (true) {
+            try{
+                return LocalDate.parse(entrada.nextLine());
+            } catch(Exception e){
+                System.out.println("Fecha erronea: debe meter una fecha valida(AAAA-MM-DDa )");
+                
+            }   
+        }
+    }
     static Cliente validarCliente() {
         String dni;
         while(true){

@@ -36,7 +36,7 @@ public abstract class Cuenta {
         this.nombre = nombre;
     }
     //---------------METODOS---------------
-    public abstract void retirar(double cantidad);
+    public abstract void retirar(double cantidad) throws RetiroNoValidoException;
     public abstract void ingresar(double cantidad);
     protected void mostrarMovimientos() {
         for (Movimientos m : movimientos) {

@@ -17,7 +17,7 @@ public class CuentaCorriente extends Cuenta{
         mostrarMovimientos();
         System.out.println(s);
     }
-    public void retirar(double cantidad) {
+    public void retirar(double cantidad) throws RetiroNoValidoException {
         if (cantidad > 300 || saldo - cantidad < 0) {
             System.out.println("ERROR: no se puede retirar esa cantidad");
         } else {
