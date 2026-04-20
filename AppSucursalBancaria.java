@@ -15,26 +15,30 @@ public class AppSucursalBancaria {
 
     public static void main(String[] args) {
 
-        int opcion = 0;
-        while (opcion != 4) {
-            menuPrincipal();
-            opcion = Integer.parseInt(entrada.nextLine()); 
-            switch (opcion) {
-                case 1:
-                    crearCliente();
-                    break;
-                case 2:
-                    crearCuenta();
-                    break;
-                case 3:
-                    seleccionarCuenta();
-                    break;
-                case 4:
-                    System.out.println("Fin del programa");
-                    break;
-                default:
-                    System.out.println("Opción no válida, selecciona una opción entre 1 y 4");
+        try {
+            int opcion = 0;
+            while (opcion != 4) {
+                menuPrincipal();
+                opcion = Integer.parseInt(entrada.nextLine()); 
+                switch (opcion) {
+                    case 1:
+                        crearCliente();
+                        break;
+                    case 2:
+                        crearCuenta();
+                        break;
+                    case 3:
+                        seleccionarCuenta();
+                        break;
+                    case 4:
+                        System.out.println("Fin del programa");
+                        break;
+                    default:
+                        System.out.println("Opción no válida, selecciona una opción entre 1 y 4");
+                }
             }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
         entrada.close();
     }
@@ -119,19 +123,24 @@ public class AppSucursalBancaria {
 
         
     static Cuenta validarCuenta(Cliente cliente){
-        int opcion;
-        while(true){
-             menuTipoCuenta();
-             opcion = Integer.parseInt(entrada.nextLine());
-             switch (opcion) {
-                case 1:
-                    return new CuentaCorriente(contadorCuenta++, opcion, cliente);
-                case 2:
-                    return new CuentaVivienda(contadorCuenta++, opcion, cliente);
-                case 3:
-                    return new FondoInversion(contadorCuenta++, opcion, cliente, opcion);
-             }
+        try {
+            int opcion;
+            while(true){
+                 menuTipoCuenta();
+                 opcion = Integer.parseInt(entrada.nextLine());
+                 switch (opcion) {
+                    case 1:
+                        return new CuentaCorriente(contadorCuenta++, opcion, cliente);
+                    case 2:
+                        return new CuentaVivienda(contadorCuenta++, opcion, cliente);
+                    case 3:
+                        return new FondoInversion(contadorCuenta++, opcion, cliente, opcion);
+                 }
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
+        return cuentaActiva;
     }
 
     static void seleccionarCuenta() {
@@ -168,39 +177,59 @@ public class AppSucursalBancaria {
 
     static void seleccionarOpcionCuenta() {
 
-        int opcionCuenta = 0;
-        while (opcionCuenta != 4) {
-            menuCuenta();
-            opcionCuenta = Integer.parseInt(entrada.nextLine());  
-            switch (opcionCuenta) {
-                case 1:
-                    ingresar();
-                    break;
-                case 2:
-                    retirar();
-                    break;
-                case 3:
-                    cuentaActiva.verDatos();
-                    break;
-                case 4:
-                    System.out.println("Volviendo al menú principal");
-                    break;
-                default:
-                    System.out.println("Opción no válida");
+        try {
+            int opcionCuenta = 0;
+            while (opcionCuenta != 4) {
+                menuCuenta();
+                opcionCuenta = Integer.parseInt(entrada.nextLine());  
+                switch (opcionCuenta) {
+                    case 1:
+                        ingresar();
+                        break;
+                    case 2:
+                        retirar();
+                        break;
+                    case 3:
+                        cuentaActiva.verDatos();
+                        break;
+                    case 4:
+                        System.out.println("Volviendo al menú principal");
+                        break;
+                    default:
+                        System.out.println("Opción no válida");
+                }
             }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
         }
     }
 
     static void ingresar() {
         System.out.println("Indica la cantidad a ingresar");
         int cantidad = Integer.parseInt(entrada.nextLine());        
-        cuentaActiva.ingresar(cantidad);
+        try {
+            cuentaActiva.ingreso(cantidad);
+        }catch (NumberFormatException e) { 
+            System.out.println("Indique una cantidad númerica válida");
+        }catch (IngresoNoValidoException e) {
+            e.printStackTrace();
+        }catch (Exception e){
+            System.out.println("ERROR: "+e.getMessage());
+        }
     }
 
     static void retirar() {
         System.out.println("Indica la cantidad a retirar");
         int cantidad = Integer.parseInt(entrada.nextLine());          
-        cuentaActiva.retirar(cantidad);
+        try {
+            cuentaActiva.retiro(cantidad);
+        }catch (NumberFormatException e) { 
+            System.out.println("Indique una cantidad númerica válida"); 
+        }catch (RetiroNoValidoException e) {
+            e.printStackTrace();
+        }catch (Exception e){
+            System.out.println("ERROR: "+e.getMessage());
+        }
     }
 
     static void menuPrincipal() {

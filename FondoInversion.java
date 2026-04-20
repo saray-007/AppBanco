@@ -34,7 +34,7 @@ public class FondoInversion extends Cuenta{
         mostrarMovimientos();
         System.out.println(s);
     }
-    public void retirar(double cantidad) {
+    /*public void retirar(double cantidad) {
         if (cantidad < 500 || saldo - cantidad < 3000) {
             System.out.println("ERROR: no se puede retirar esa cantidad");
         } else {
@@ -42,9 +42,19 @@ public class FondoInversion extends Cuenta{
             movimientos.add(new Movimientos(LocalDateTime.now(), cantidad, cantidad, "R"));
             System.out.println("Se ha retirado correctamnete la cantidad de " + cantidad + " $ a la cuenta:"+ numeroCuenta);
         }
+    }*/
+    public void retiro(double cantidad) throws RetiroNoValidoException {
+        if(cantidad <500) throw new RetiroNoValidoException("retiro minimo 500€");
+        if(saldo-cantidad <3000) throw new RetiroNoValidoException("saldo insuficiente");
+        if(cantidad<500) throw new RetiroNoValidoException("no se puede retirar menos de 500€");
+        this.corfirmarRetiro(cantidad);
     }
-
-    public void ingresar(double cantidad) {
+    public void ingreso(double cantidad) throws IngresoNoValidoException {
+        if(cantidad <500) throw new IngresoNoValidoException("ingreso minimo 500€");
+        if(cantidad<0) throw new IngresoNoValidoException("ingreso negativo");
+        this.corfirmarIngreso(cantidad);
+    }
+    /*public void ingresar(double cantidad) {
         if (cantidad < 500) {
             System.out.println("ERROR: ingreso mínimo 500€");
         } else {
@@ -52,5 +62,5 @@ public class FondoInversion extends Cuenta{
             movimientos.add(new Movimientos(LocalDateTime.now(), cantidad, cantidad, "I"));
             System.out.println("Se ha ingresado correctamnete la cantidad de " + cantidad + " $ a la cuenta:"+ numeroCuenta);
         }
-    }
+    }*/
 }
