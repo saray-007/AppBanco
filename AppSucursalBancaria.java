@@ -49,7 +49,7 @@ public class AppSucursalBancaria {
         //COMPROBAR QUE EL CLIENTE NO EXISTE
         String dni = validarDni();
         System.out.println("Dime el nombre del cliente");
-        String nombre = entrada.nextLine();
+        String nombre = validarCadena();
         System.out.println("Dime los apellidos del cliente");
         String apellidos = entrada.nextLine();
         System.out.println("Dime la dirección del cliente");
@@ -77,6 +77,20 @@ public class AppSucursalBancaria {
         //añadimos la cuenta al array de cuentas
         cuentas.add(cuenta);
         System.out.println("La cuenta a nombre de "+cliente.nombreCompleto()+" se ha creado correctamente");
+    }
+    //metodo para comprobar que una cadena de nombre es valida
+    static String validarCadena(){
+        while(true){
+            try{ 
+                String s = entrada.nextLine();
+                //compara la cadena con una expresion regular
+                if(s.matches("[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\\s]+"))
+                    return s;
+                else throw new CadenaNoValidaException("La cadena contiene caracteres no validos [a-zA-ZñÑáéíóúÁÉÍÓÚüÜ \\s]");
+            }catch(CadenaNoValidaException e){
+                System.out.println(e);
+            }
+        }
     }
     static String validarDni(){
         while(true){
